@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أهمية التبرع بالدم - تبرع بالدم سوريا</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💉</text></svg>">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h2><i class="fas fa-tint"></i> تبرع بالدم - سوريا</h2>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="importance.html">أهمية التبرع</a>
+                <a href="hospitals.html">المحافظات</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>لماذا التبرع بالدم مهم؟</h1>
+            </div>
+
+            <div class="info-cards">
+                <div class="card">
+                    <div class="card-icon">❤️</div>
+                    <h3>ينقذ 3 حيوات</h3>
+                    <p>وحدة دم واحدة يمكن أن تنقذ حياة 3 أشخاص</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⏰</div>
+                    <h3>كل 56 يوم</h3>
+                    <p>يمكنك التبرع كل 56 يوماً بأمان تام</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🩸</div>
+                    <h3>زمر الدم</h3>
+                    <p>تعرف على زمرة دمك ومن يمكنك مساعدته</p>
+                </div>
+            </div>
+
+            <div class="when-to-donate">
+                <h2>متى يجب التبرع؟</h2>
+                <ul>
+                    <li>عندما تكون بصحة جيدة</li>
+                    <li>عمرك بين 18-65 سنة</li>
+                    <li>وزنك 50 كجم أو أكثر</li>
+                    <li>ليس لديك أمراض مزمنة</li>
+                </ul>
+            </div>
+
+            <div class="blood-types">
+                <h2>الزمر المتشابهة</h2>
+                <table>
+                    <tr><th>زمرة المتبرع</th><th>يمكن التبرع لـ</th></tr>
+                    <tr><td>O-</td><td>الجميع</td></tr>
+                    <tr><td>O+</td><td>O+, A+, B+, AB+</td></tr>
+                    <tr><td>A-</td><td>A-, A+, AB-, AB+</td></tr>
+                    <tr><td>A+</td><td>A+, AB+</td></tr>
+                    <tr><td>B-</td><td>B-, B+, AB-, AB+</td></tr>
+                    <tr><td>B+</td><td>B+, AB+</td></tr>
+                    <tr><td>AB-</td><td>AB-, AB+</td></tr>
+                    <tr><td>AB+</td><td>AB+</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
