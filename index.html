@@ -50,9 +50,7 @@
     <section id="governorates" class="governorates-preview">
         <div class="container">
             <h2>اختر محافظتك لمعرفة أقرب مركز</h2>
-            <div class="governorates-grid" id="governoratesGrid">
-                <!-- سيتم ملؤها بالـ JavaScript -->
-            </div>
+            <div class="governorates-grid" id="governoratesGrid"></div>
         </div>
     </section>
 
@@ -61,22 +59,28 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h2>
-            <form id="loginForm" action="login.php" method="POST">
+            <p id="loginError" style="display:none; color:#ff4757; margin-bottom:1rem; font-weight:600;"></p>
+            <form id="loginForm">
                 <div class="form-group">
-                    <label><i class="fas fa-user"></i> الاسم</label>
-                    <input type="text" name="username" required>
+                    <label><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" id="loginUsername" required placeholder="أدخل اسم المستخدم">
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-lock"></i> كلمة المرور</label>
-                    <input type="password" name="password" required>
+                    <input type="password" id="loginPassword" required placeholder="أدخل كلمة المرور">
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
                     <i class="fas fa-arrow-left"></i> دخول
                 </button>
             </form>
+            <div style="margin-top:1.5rem; padding:1rem; background:#f8f9fa; border-radius:10px; font-size:0.9rem; color:#666;">
+                <strong>حسابات تجريبية:</strong><br>
+                admin / 123456 &nbsp;|&nbsp; user1 / 111111 &nbsp;|&nbsp; user2 / 222222
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
