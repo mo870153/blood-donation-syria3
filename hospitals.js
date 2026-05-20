@@ -112,9 +112,16 @@ function loadGovernorateData() {
             <div class="hospitals-list">
                 ${data.centers.map(center => `
                     <div class="location">
-                        <h4>${center.name}</h4>
-                        <p>${center.address}</p>
-                        <p><strong>☎️ ${center.phone}</strong></p>
+                        <div style="display: flex; justify-content: space-between; align-items: start; gap: 1rem;">
+                            <div style="flex: 1;">
+                                <h4>${center.name}</h4>
+                                <p>${center.address}</p>
+                                <p><strong>☎️ ${center.phone}</strong></p>
+                            </div>
+                            <a href="book-appointment.html?hospital=${encodeURIComponent(center.name)}&gov=${encodeURIComponent(gov)}" class="book-btn-small">
+                                <i class="fas fa-calendar-check"></i> حجز موعد
+                            </a>
+                        </div>
                     </div>
                 `).join('')}
             </div>
