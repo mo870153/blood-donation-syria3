@@ -237,11 +237,85 @@
                     </a>
                 </div>
 
+                <div class="appointments-section" id="appointmentsSection"></div>
+
                 <button class="logout-btn" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
                 </button>
             `;
+
+            // عرض المواعيد المحجوزة
+            loadAppointments(user);
         });
+
+        function loadAppointments(user) {
+            const appointmentKey = 'appointments_' + user.username;
+            const appointments = JSON.parse(localStorage.getItem(appointmentKey)) || [];
+            const section = document.getElementById('appointmentsSection');
+
+            if (appointments.length === 0) {
+                section.innerHTML = `
+                    <div class="no-appointments">
+                        <i class="fas fa-calendar-times"></i>
+                        <p>لا توجد مواعيد محجوزة حالياً</p>
+                        <a href="hospitals.html" class="book-appointment-link">
+                            <i class="fas fa-calendar-check"></i> احجز موعد الآن
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            // ترتيب المواعيد من الأحدث إلى الأقدم
+            appointments.sort((a, b) => new Date(b.bookedAt) - new Date(a.bookedAt));
+
+            let html = `<h3><i class="fas fa-calendar-check"></i> مواعيدي المحجوزة</h3>`;
+            
+            appointments.forEach(apt => {
+                const bookedDate = new Date(apt.bookedAt);
+                const formattedDate = bookedDate.toLocaleDateString('ar-SY', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+
+                html += `
+                    <div class="appointment-card">
+                        <div class="appointment-details">
+                            <div class="appointment-detail">
+                                <span class="appointment-detail-label">المستشفى</span>
+                                <span class="appointment-detail-value">${apt.hospital}</span>
+                            </div>
+                            <div class="appointment-detail">
+                                <span class="appointment-detail-label">المحافظة</span>
+                                <span class="appointment-detail-value">${apt.gov}</span>
+                            </div>
+                            <div class="appointment-detail">
+                                <span class="appointment-detail-label">الموعد</span>
+                                <span class="appointment-detail-value">${apt.time}</span>
+                            </div>
+                            <div class="appointment-detail">
+                                <span class="appointment-detail-label">التاريخ</span>
+                                <span class="appointment-detail-value">${apt.date}</span>
+                            </div>
+                            <div class="appointment-detail">
+                                <span class="appointment-detail-label">رقم الهاتف</span>
+                                <span class="appointment-detail-value">${apt.phone}</span>
+                            </div>
+                            <div class="appointment-detail">
+                                <span class="appointment-detail-label">الجنس</span>
+                                <span class="appointment-detail-value">${apt.gender}</span>
+                            </div>
+                        </div>
+                        <div class="appointment-status">
+                            ✓ مؤكد
+                        </div>
+                    </div>
+                `;
+            });
+
+            section.innerHTML = html;
+        }
 
         function logout() {
             sessionStorage.removeItem('loggedUser');
