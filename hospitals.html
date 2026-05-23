@@ -8,6 +8,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💉</text></svg>">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <style>
+        #map-section {
+            display: none;
+            padding: 1.5rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        #map-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        #map-section h2 {
+            font-size: 1.2rem;
+            color: #ff4757;
+            margin-bottom: 1rem;
+            font-family: 'Cairo', sans-serif;
+        }
+        #map {
+            height: 380px;
+            border-radius: 16px;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            z-index: 1;
+        }
+        .leaflet-popup-content-wrapper {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            border-radius: 12px;
+        }
+        .leaflet-popup-content {
+            font-family: 'Cairo', sans-serif;
+        }
+        .map-popup-title {
+            font-weight: 700;
+            color: #ff4757;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .map-popup-addr {
+            font-size: 0.82rem;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .map-popup-phone {
+            font-size: 0.82rem;
+            color: #333;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
@@ -48,6 +100,14 @@
         </div>
     </section>
 
+    <!-- Map Section -->
+    <section id="map-section">
+        <div class="container">
+            <h2><i class="fas fa-map-marker-alt"></i> خريطة مراكز التبرع</h2>
+            <div id="map"></div>
+        </div>
+    </section>
+
     <!-- Content Area -->
     <div id="contentArea">
         <div class="container">
@@ -59,6 +119,8 @@
         </div>
     </div>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="hospitals.js"></script>
 </body>
 </html>
