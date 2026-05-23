@@ -1,952 +1,138 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Cairo', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    direction: rtl;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-/* Header */
-.header {
-    background: linear-gradient(135deg, #ff4757, #ff6b7a);
-    color: white;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 20px rgba(255,71,87,0.4);
-}
-
-.navbar {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
-
-.logo h2 {
-    font-weight: 700;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s;
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    right: 0;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.3s;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 3px 0;
-    transition: 0.3s;
-}
-
-/* Hero */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 140px 2rem 4rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-    opacity: 0.3;
-}
-
-.hero-content {
-    flex: 1;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-.hero-content h1 span {
-    background: linear-gradient(45deg, #ff4757, #ff6b7a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    opacity: 0.95;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: linear-gradient(45deg, #ff4757, #ff6b7a);
-    color: white;
-    box-shadow: 0 5px 15px rgba(255,71,87,0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255,71,87,0.6);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255,255,255,0.8);
-}
-
-.btn-secondary:hover {
-    background: white;
-    color: #667eea;
-}
-
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.blood-drop {
-    font-size: 15rem;
-    animation: pulse 2s ease-in-out infinite;
-    color: rgba(255,255,255,0.9);
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-/* Governorates Preview */
-.governorates-preview {
-    padding: 80px 0;
-    background: #f8f9fa;
-}
-
-.governorates-preview h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #333;
-}
-
-.governorates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.governorate-card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 3px solid transparent;
-}
-
-.governorate-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255,71,87,0.2);
-    border-color: #ff4757;
-}
-
-.governorate-card i {
-    font-size: 4rem;
-    color: #ff4757;
-    margin-bottom: 1rem;
-}
-
-.governorate-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.governorate-card p {
-    color: #666;
-    margin-bottom: 0.3rem;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background: white;
-    margin: 8% auto;
-    padding: 2.5rem;
-    border-radius: 25px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    animation: modalSlide 0.4s ease-out;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-}
-
-@keyframes modalSlide {
-    from { transform: translateY(-50px) scale(0.9); opacity: 0; }
-    to { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #999;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-
-.close:hover {
-    background: #ff4757;
-    color: white;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #e1e5e9;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-family: 'Cairo', sans-serif;
-    transition: all 0.3s;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #ff4757;
-    box-shadow: 0 0 0 3px rgba(255,71,87,0.1);
-}
-
-/* Content Sections */
-.content-section {
-    padding: 100px 0;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-header h1, .section-header h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-/* Governorate Selector (hospitals page) */
-.governorate-selector {
-    padding: 120px 0 40px;
-    background: linear-gradient(135deg, #ff4757, #ff6b7a);
-    color: white;
-    text-align: center;
-}
-
-.selector-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.selector-header select {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-family: 'Cairo', sans-serif;
-    border: none;
-    border-radius: 50px;
-    background: white;
-    color: #333;
-    cursor: pointer;
-    min-width: 250px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Emergency & Centers */
-#contentArea {
-    padding: 40px 0;
-    min-height: 400px;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: #999;
-}
-
-.empty-state i {
-    font-size: 5rem;
-    color: #ff4757;
-    margin-bottom: 1.5rem;
-    opacity: 0.5;
-}
-
-.empty-state h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #666;
-}
-
-.emergency-section, .centers-section {
-    padding: 30px 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.emergency-section .section-header,
-.centers-section .section-header {
-    text-align: right;
-    margin-bottom: 1.5rem;
-}
-
-.emergency-section .section-header h2,
-.centers-section .section-header h2 {
-    font-size: 1.8rem;
-    color: #ff4757;
-}
-
-.emergency-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.emergency-card {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    border-right: 5px solid #ff4757;
-    position: relative;
-}
-
-.urgency-badge {
-    background: #ff4757;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-.emergency-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-    color: #333;
-}
-
-.emergency-card .contact {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.hospital {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.no-emergencies {
-    background: #e8f5e9;
-    color: #2e7d32;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    font-weight: 600;
-    margin-bottom: 2rem;
-}
-
-.hospitals-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.location {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border-top: 4px solid #667eea;
-}
-
-.location h4 {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.location p {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 0.3rem;
-}
-
-/* Importance page */
-.info-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-}
-
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-    color: #333;
-}
-
-.card p {
-    color: #666;
-}
-
-.when-to-donate {
-    background: #f8f9fa;
-    border-radius: 20px;
-    padding: 2.5rem;
-    margin: 2rem 0;
-}
-
-.when-to-donate h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-}
-
-.when-to-donate ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
-.when-to-donate ul li {
-    background: white;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.when-to-donate ul li::before {
-    content: '✅';
-}
-
-.blood-types {
-    margin: 2rem 0;
-}
-
-.blood-types h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-}
-
-.blood-types table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-.blood-types th {
-    background: linear-gradient(135deg, #ff4757, #ff6b7a);
-    color: white;
-    padding: 1rem 1.5rem;
-    text-align: right;
-}
-
-.blood-types td {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.blood-types tr:last-child td {
-    border-bottom: none;
-}
-
-.blood-types tr:hover td {
-    background: #fff5f5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        left: 0;
-        background: #ff4757;
-        flex-direction: column;
-        padding: 1rem 2rem;
-        gap: 1rem;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 120px 1rem 2rem;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .blood-drop {
-        font-size: 8rem;
-    }
-
-    .governorates-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-}
-
-/* Book Appointment Button */
-.book-btn-small {
-    padding: 0.6rem 1.2rem;
-    background: linear-gradient(135deg, #ff4757, #ff6b7a);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    font-family: 'Cairo', sans-serif;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: all 0.3s;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.book-btn-small:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255,71,87,0.4);
-}
-
-/* Appointments Section in Profile */
-.appointments-section {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-}
-
-.appointments-section h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.appointments-section h3 i {
-    color: #ff4757;
-}
-
-.appointment-card {
-    background: #f8f9fa;
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border-right: 4px solid #ff4757;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1.5rem;
-    align-items: start;
-}
-
-.appointment-card:last-child {
-    margin-bottom: 0;
-}
-
-.appointment-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-}
-
-.appointment-detail {
-    display: flex;
-    flex-direction: column;
-}
-
-.appointment-detail-label {
-    font-size: 0.85rem;
-    color: #999;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-}
-
-.appointment-detail-value {
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
-}
-
-.appointment-status {
-    background: #e8f5e9;
-    color: #2e7d32;
-    padding: 0.6rem 1rem;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    white-space: nowrap;
-}
-
-.no-appointments {
-    text-align: center;
-    padding: 2rem;
-    color: #999;
-}
-
-.no-appointments i {
-    font-size: 3rem;
-    color: #ddd;
-    margin-bottom: 1rem;
-}
-
-.no-appointments p {
-    margin-bottom: 1.5rem;
-}
-
-.book-appointment-link {
-    padding: 0.7rem 1.5rem;
-    background: linear-gradient(135deg, #ff4757, #ff6b7a);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-family: 'Cairo', sans-serif;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.book-appointment-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255,71,87,0.4);
-}
-
-@media (max-width: 600px) {
-    .appointment-card {
-        grid-template-columns: 1fr;
-    }
-    
-    .appointment-details {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/* =====================
-   Footer
-   ===================== */
-.site-footer {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #fff;
-    padding: 2.5rem 1.5rem 1.5rem;
-    margin-top: 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.site-footer::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #ff4757, #ff6b7a, #ff4757);
-}
-
-.footer-logo {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #ff4757;
-    margin-bottom: 0.5rem;
-}
-
-.footer-logo i {
-    margin-left: 0.4rem;
-}
-
-.footer-tagline {
-    font-size: 0.9rem;
-    color: #aaa;
-    margin-bottom: 2rem;
-}
-
-.footer-divider {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #ff4757, transparent);
-    margin: 0 auto 2rem;
-}
-
-.footer-team-title {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #888;
-    margin-bottom: 1.2rem;
-}
-
-.footer-students {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.student-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.student-avatar {
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff4757, #c0392b);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #fff;
-    border: 2px solid rgba(255,71,87,0.4);
-    box-shadow: 0 4px 15px rgba(255,71,87,0.3);
-}
-
-.student-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #eee;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 1.2rem;
-    font-size: 0.78rem;
-    color: #666;
-}
-
-@media (max-width: 480px) {
-    .footer-students { gap: 1.5rem; }
-    .student-name { font-size: 0.85rem; }
-}
-
-/* Supervisor */
-.footer-supervisor {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    margin: 1rem 0 1.5rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(200,168,75,0.25);
-    border-radius: 30px;
-    padding: 0.55rem 1.8rem;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.supervisor-label {
-    font-size: 0.78rem;
-    color: #999;
-    letter-spacing: 1px;
-}
-
-.supervisor-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #c8a84b;
-}
-
-/* University */
-.footer-university {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.footer-uni-text {
-    text-align: center;
-}
-
-.footer-uni-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #c8a84b;
-    letter-spacing: 1px;
-}
-
-.footer-uni-sub {
-    font-size: 0.8rem;
-    color: #aaa;
-    margin-top: 2px;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبرع بالدم - سوريا | أنقذ حياة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💉</text></svg>">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h2><i class="fas fa-tint"></i> تبرع بالدم - سوريا</h2>
+            </div>
+            <div class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#login" data-action="login">تسجيل الدخول</a>
+                <a href="importance.html">أهمية التبرع</a>
+                <a href="hospitals.html">المحافظات</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>كل قطرة دم <span>تنقذ حياة</span></h1>
+            <p>اختر محافظتك وكن جزءاً من سلسلة الحياة في سوريا</p>
+            <div class="hero-buttons">
+                <a href="#governorates" class="btn btn-primary">اختر محافظتك</a>
+                <a href="importance.html" class="btn btn-secondary">تعرف على التبرع</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="blood-drop"><i class="fas fa-tint"></i></div>
+        </div>
+    </section>
+
+    <!-- Quick Governorates -->
+    <section id="governorates" class="governorates-preview">
+        <div class="container">
+            <h2>اختر محافظتك لمعرفة أقرب مركز</h2>
+            <div class="governorates-grid" id="governoratesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h2>
+            <p id="loginError" style="display:none; color:#ff4757; margin-bottom:1rem; font-weight:600;"></p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" id="loginUsername" required placeholder="أدخل اسم المستخدم">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="loginPassword" required placeholder="أدخل كلمة المرور">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                    <i class="fas fa-arrow-left"></i> دخول
+                </button>
+            </form>
+            <div style="margin-top:1.5rem; padding:1rem; background:#f8f9fa; border-radius:10px; font-size:0.9rem; color:#666;">
+                <strong>حسابات تجريبية:</strong><br>
+                admin / 123456 &nbsp;|&nbsp; user1 / 111111 &nbsp;|&nbsp; user2 / 222222
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-logo"><i class="fas fa-tint"></i> تبرع بالدم - سوريا</div>
+        <p class="footer-tagline">كل قطرة دم تنقذ حياة</p>
+        <div class="footer-divider"></div>
+        <p class="footer-team-title">إعداد الطلاب</p>
+        <div class="footer-students">
+            <div class="student-card">
+                <div class="student-avatar">1</div>
+                <span class="student-name">محمد معين الحلقي</span>
+            </div>
+            <div class="student-card">
+                <div class="student-avatar">2</div>
+                <span class="student-name">إسلام منير العقلة</span>
+            </div>
+        </div>
+        <div class="footer-supervisor">
+            <span class="supervisor-label">بإشراف</span>
+            <span class="supervisor-name">المهندسة هبة الخطيب</span>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-university">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="80" height="80" style="margin-bottom:0.5rem">
+  <!-- Outer circle -->
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#c8a84b" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#c8a84b" stroke-width="1"/>
+  <!-- Open book -->
+  <path d="M28 68 Q60 58 60 58 Q60 58 92 68 L92 44 Q60 34 60 34 Q60 34 28 44 Z" fill="#c8a84b" opacity="0.15"/>
+  <path d="M60 34 L60 68" stroke="#c8a84b" stroke-width="1.5" fill="none"/>
+  <path d="M28 44 Q60 34 60 34" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M92 44 Q60 34 60 34" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M28 68 Q60 58 60 58" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M92 68 Q60 58 60 58" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <line x1="28" y1="44" x2="28" y2="68" stroke="#c8a84b" stroke-width="2"/>
+  <line x1="92" y1="44" x2="92" y2="68" stroke="#c8a84b" stroke-width="2"/>
+  <!-- Stars at top -->
+  <text x="60" y="30" text-anchor="middle" font-size="9" fill="#c8a84b">★ ★ ★</text>
+  <!-- University name Arabic -->
+  <text x="60" y="86" text-anchor="middle" font-size="7.5" fill="#c8a84b" font-family="Arial">جامعة دمشق</text>
+  <text x="60" y="97" text-anchor="middle" font-size="6" fill="#c8a84b" font-family="Arial">الكلية التطبيقية</text>
+  <!-- Bottom decoration -->
+  <text x="60" y="109" text-anchor="middle" font-size="5.5" fill="#c8a84b" font-family="Arial">Damascus University</text>
+</svg>
+            <div class="footer-uni-text">
+                <div class="footer-uni-name">جامعة دمشق</div>
+                <div class="footer-uni-sub">الكلية التقنية التطبيقية</div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 تبرع بالدم سوريا · جميع الحقوق محفوظة</div>
+    </footer>
+
+</body>
+</html>
