@@ -664,3 +664,149 @@ body {
     color: #aaa;
     margin-top: 2px;
 }
+
+/* ===================== */
+/* Importance Page Styles */
+/* ===================== */
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(255,71,87,0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.7rem;
+}
+
+.card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* When to Donate */
+.when-to-donate {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.when-to-donate h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.when-to-donate ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.when-to-donate ul li {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 30px;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.95rem;
+    color: #444;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.when-to-donate ul li::before {
+    content: "✅";
+    font-size: 1rem;
+}
+
+/* Blood Types Table */
+.blood-types {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+    margin-bottom: 3rem;
+}
+
+.blood-types h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.blood-types table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.blood-types table th {
+    background: #ff4757;
+    color: white;
+    padding: 0.85rem 1.5rem;
+    text-align: right;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.blood-types table td {
+    padding: 0.8rem 1.5rem;
+    text-align: right;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+}
+
+.blood-types table tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+.blood-types table tr:hover td {
+    background: #fff5f5;
+}
+
+@media (max-width: 768px) {
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+    .when-to-donate, .blood-types {
+        padding: 1.5rem;
+    }
+}
