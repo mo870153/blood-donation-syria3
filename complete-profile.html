@@ -186,10 +186,10 @@
                     <div class="form-group">
                         <label>
                             <i class="fas fa-birthday-cake" style="color:#fa7c17"></i>
-                            العمر
+                            تاريخ الميلاد
                             <span class="optional">(اختياري)</span>
                         </label>
-                        <input type="number" id="age" placeholder="مثال: 25" min="16" max="65">
+                        <input type="date" id="birthDate">
                     </div>
                     <div class="form-group">
                         <label>
@@ -263,6 +263,123 @@
         </div>
     </div>
 
+    <!-- Auth Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h2>
+            <p id="loginError" style="display:none; color:#ff4757; margin-bottom:1rem; font-weight:600;"></p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" id="loginUsername" required placeholder="أدخل اسم المستخدم">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="loginPassword" required placeholder="أدخل كلمة المرور">
+                    <i class="fas fa-eye password-toggle" onclick="togglePassword('loginPassword')"></i>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                    <i class="fas fa-arrow-left"></i> دخول
+                </button>
+            </form>
+            <div class="auth-links">
+                <a href="javascript:void(0)" onclick="openModal('forgotModal')">نسيت كلمة السر؟</a>
+                <a href="javascript:void(0)" onclick="openModal('signupModal')">إنشاء حساب جديد</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <h2><i class="fas fa-user-plus"></i> إنشاء حساب جديد</h2>
+            <p id="signupError" style="display:none; color:#ff4757; margin-bottom:1rem; font-weight:600;"></p>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label><i class="fas fa-id-card"></i> الاسم الكامل</label>
+                    <input type="text" id="signupFullName" required placeholder="الاسم الثلاثي">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" id="signupUsername" required placeholder="باللغة الإنجليزية">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="signupPassword" required placeholder="كلمة سر قوية">
+                    <i class="fas fa-eye password-toggle" onclick="togglePassword('signupPassword')"></i>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> رقم الهاتف</label>
+                    <input type="tel" id="signupPhone" required placeholder="رقم الموبايل">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> المحافظة</label>
+                    <select id="signupCity" required>
+                        <option value="">اختر محافظتك</option>
+                        <option value="دمشق">دمشق</option>
+                        <option value="ريف دمشق">ريف دمشق</option>
+                        <option value="حلب">حلب</option>
+                        <option value="حمص">حمص</option>
+                        <option value="حماة">حماة</option>
+                        <option value="اللاذقية">اللاذقية</option>
+                        <option value="طرطوس">طرطوس</option>
+                        <option value="إدلب">إدلب</option>
+                        <option value="دير الزور">دير الزور</option>
+                        <option value="الرقة">الرقة</option>
+                        <option value="الحسكة">الحسكة</option>
+                        <option value="درعا">درعا</option>
+                        <option value="السويداء">السويداء</option>
+                        <option value="القنيطرة">القنيطرة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-alt"></i> تاريخ الميلاد</label>
+                    <input type="date" id="signupBirthDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                    <i class="fas fa-check"></i> تسجيل الحساب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="forgotModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('forgotModal')">&times;</span>
+            <h2><i class="fas fa-key"></i> استعادة كلمة المرور</h2>
+            <p id="forgotStatus" style="display:none; margin-bottom:1rem; font-weight:600;"></p>
+            <form id="forgotForm">
+                <p style="font-size:0.85rem; color:#666; margin-bottom:1rem;">أدخل البيانات الصحيحة للتحقق من هويتك:</p>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" id="forgotUsername" required placeholder="اسم المستخدم الخاص بك">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> رقم الهاتف المسجل</label>
+                    <input type="tel" id="forgotPhone" required placeholder="رقم الهاتف">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-alt"></i> تاريخ الميلاد</label>
+                    <input type="date" id="forgotBirthDate" required>
+                </div>
+                <div id="newPasswordSection" style="display:none; border-top:1px solid #eee; padding-top:1rem; margin-top:1rem;">
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> كلمة المرور الجديدة</label>
+                        <input type="password" id="newPassword" placeholder="أدخل كلمة المرور الجديدة">
+                    </div>
+                    <button type="button" onclick="resetPassword()" class="btn btn-primary" style="width:100%; justify-content:center;">
+                        تحديث كلمة المرور
+                    </button>
+                </div>
+                <button type="submit" id="verifyBtn" class="btn btn-primary" style="width:100%; justify-content:center;">
+                    التحقق من البيانات
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const raw = sessionStorage.getItem('loggedUser');
@@ -270,6 +387,12 @@
 
             const user = JSON.parse(raw);
             document.getElementById('welcomeName').textContent = '👤 ' + user.fullName;
+
+            // Fill existing data if available
+            if (user.birthDate) document.getElementById('birthDate').value = user.birthDate;
+            if (user.bloodType) document.getElementById('bloodType').value = user.bloodType;
+            if (user.city)      document.getElementById('city').value      = user.city;
+            if (user.phone)     document.getElementById('phone').value     = user.phone;
 
             // Hamburger
             const hamburger = document.querySelector('.hamburger');
@@ -281,20 +404,25 @@
             document.getElementById('completeForm').addEventListener('submit', (e) => {
                 e.preventDefault();
 
-                const extra = {
-                    age:       document.getElementById('age').value       || null,
-                    bloodType: document.getElementById('bloodType').value || null,
-                    city:      document.getElementById('city').value      || null,
-                    phone:     document.getElementById('phone').value     || null,
-                    email:     document.getElementById('email').value     || null
+                const updatedData = {
+                    ...user,
+                    birthDate: document.getElementById('birthDate').value || user.birthDate,
+                    bloodType: document.getElementById('bloodType').value || user.bloodType,
+                    city:      document.getElementById('city').value      || user.city,
+                    phone:     document.getElementById('phone').value     || user.phone,
+                    email:     document.getElementById('email').value     || (user.email || null)
                 };
 
-                // حفظ البيانات بالـ localStorage مرتبطة بالمستخدم
-                localStorage.setItem('profile_' + user.username, JSON.stringify(extra));
+                // تحديث الـ localStorage (قائمة المستخدمين)
+                const users = getUsers();
+                const index = users.findIndex(u => u.username === user.username);
+                if (index !== -1) {
+                    users[index] = updatedData;
+                    saveUsers(users);
+                }
 
                 // تحديث الـ session
-                const updated = { ...user, ...extra };
-                sessionStorage.setItem('loggedUser', JSON.stringify(updated));
+                sessionStorage.setItem('loggedUser', JSON.stringify(updatedData));
 
                 window.location.href = 'profile.html';
             });
@@ -304,5 +432,52 @@
             window.location.href = 'profile.html';
         }
     </script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-logo"><i class="fas fa-tint"></i> تبرع بالدم - سوريا</div>
+        <p class="footer-tagline">كل قطرة دم تنقذ حياة</p>
+        <div class="footer-divider"></div>
+        <p class="footer-team-title">إعداد الطلاب</p>
+        <div class="footer-students">
+            <div class="student-card">
+                <div class="student-avatar">1</div>
+                <span class="student-name">محمد معين الحلقي</span>
+            </div>
+            <div class="student-card">
+                <div class="student-avatar">2</div>
+                <span class="student-name">إسلام منير العقلة</span>
+            </div>
+        </div>
+        <div class="footer-supervisor">
+            <span class="supervisor-label">بإشراف</span>
+            <span class="supervisor-name">المهندسة هبة الخطيب</span>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-university">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="80" height="80" style="margin-bottom:0.5rem">
+                <circle cx="60" cy="60" r="56" fill="none" stroke="#c8a84b" stroke-width="2.5"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#c8a84b" stroke-width="1"/>
+                <path d="M28 68 Q60 58 60 58 Q60 58 92 68 L92 44 Q60 34 60 34 Q60 34 28 44 Z" fill="#c8a84b" opacity="0.15"/>
+                <path d="M60 34 L60 68" stroke="#c8a84b" stroke-width="1.5" fill="none"/>
+                <path d="M28 44 Q60 34 60 34" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M92 44 Q60 34 60 34" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M28 68 Q60 58 60 58" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M92 68 Q60 58 60 58" stroke="#c8a84b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <line x1="28" y1="44" x2="28" y2="68" stroke="#c8a84b" stroke-width="2"/>
+                <line x1="92" y1="44" x2="92" y2="68" stroke="#c8a84b" stroke-width="2"/>
+                <text x="60" y="30" text-anchor="middle" font-size="9" fill="#c8a84b">★ ★ ★</text>
+                <text x="60" y="86" text-anchor="middle" font-size="7.5" fill="#c8a84b" font-family="Arial">جامعة دمشق</text>
+                <text x="60" y="97" text-anchor="middle" font-size="6" fill="#c8a84b" font-family="Arial">الكلية التطبيقية</text>
+                <text x="60" y="109" text-anchor="middle" font-size="5.5" fill="#c8a84b" font-family="Arial">Damascus University</text>
+            </svg>
+            <div class="footer-uni-text">
+                <div class="footer-uni-name">جامعة دمشق</div>
+                <div class="footer-uni-sub">الكلية التقنية التطبيقية</div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 تبرع بالدم سوريا · جميع الحقوق محفوظة</div>
+    </footer>
+
 </body>
 </html>
